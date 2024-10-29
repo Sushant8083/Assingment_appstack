@@ -1,0 +1,315 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: #eaeaea; /* Light gray background */
+  color: #333;
+  animation: fadeIn 0.5s ease; /* Fade-in for the whole UI */
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Main Container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  background: #ffffff; /* White background for the app container */
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 40px auto; /* Centering */
+  animation: slideIn 0.5s ease; /* Slide-in animation */
+}
+
+/* Slide-in Animation */
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 100vw; /* Ensure it does not exceed viewport width */
+  padding: 15px 30px; /* Spacious padding */
+  background-color: #3498db; /* Navbar color */
+  color: white; /* Navbar text color */
+  position: sticky; /* Sticky navbar */
+  top: 0; /* Stick to the top */
+  z-index: 10; /* Ensure it stays above other elements */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Light shadow for depth */
+}
+
+.navbar .logo {
+  font-size: 26px; /* Logo size */
+  font-weight: 700; /* Bold for emphasis */
+}
+
+/* Navigation Links */
+.nav-links {
+  list-style: none; /* Remove bullet points */
+  display: flex;
+  gap: 20px; /* Space between links */
+  transition: max-height 0.3s ease; /* Smooth height transition */
+}
+
+/* Menu Toggle Button */
+.menu-toggle {
+  display: none; /* Hide the button by default */
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px; /* Adjust icon size */
+  cursor: pointer; /* Show pointer cursor */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column; /* Stack links vertically */
+    position: absolute; /* Positioning */
+    top: 60px; /* Below the navbar */
+    right: 0; /* Align to the right */
+    background-color: #3498db; /* Same background color */
+    width: 100%; /* Full width */
+    max-height: 0; /* Initially hide the menu */
+    overflow: hidden; /* Prevent overflow */
+    transition: max-height 0.3s ease; /* Smooth transition */
+  }
+
+  .nav-links.open {
+    max-height: 300px; /* Adjust based on number of links */
+  }
+
+  .menu-toggle {
+    display: block; /* Show the button on mobile */
+  }
+
+  .nav-links li {
+    padding: 10px; /* Padding for clickable area */
+    text-align: center; /* Center align text */
+  }
+}
+
+/* Link Styles */
+.nav-links li a {
+  text-decoration: none; /* Remove default underline */
+  color: white; /* Link color */
+  transition: color 0.3s ease; /* Smooth transitions */
+}
+
+.nav-links li a:hover {
+  color: #2980b9; /* Change text color on hover */
+}
+
+/* Loading Spinner */
+.spinner {
+  border: 8px solid rgba(255, 255, 255, 0.3); /* Light background */
+  border-top: 8px solid #3498db; /* Blue top */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite; /* Continuous spin */
+  margin: 20px; /* Margin for positioning */
+}
+
+/* Spin Animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Header Styles */
+header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Headings */
+h1 {
+  font-size: 36px;
+  margin: 0;
+  color: #2c3e50;
+  animation: fadeIn 0.7s ease; /* Fade-in for header */
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #34495e;
+  animation: fadeIn 0.7s ease; /* Fade-in for subheadings */
+  position: relative; /* Required for the underline effect */
+  display: inline-block; /* Needed for the pseudo-element */
+}
+
+/* Underline Animation */
+h2::after {
+  content: ''; /* Empty content for pseudo-element */
+  position: absolute;
+  width: 100%;
+  height: 2px; /* Thickness of underline */
+  background: #3498db; /* Color of the underline */
+  bottom: 0; /* Position at the bottom of the text */
+  left: 0; /* Start from the left */
+  transform: scaleX(0); /* Start with no width */
+  transition: transform 0.3s ease; /* Smooth transition for width */
+}
+
+h2:hover::after {
+  transform: scaleX(1); /* Expand underline on hover */
+}
+
+/* Error Message */
+.error-message {
+  color: #e74c3c; /* Error color */
+  font-weight: bold;
+  animation: shake 0.5s ease; /* Shake animation for error */
+}
+
+/* Shake Animation */
+@keyframes shake {
+  0% { transform: translate(0); }
+  25% { transform: translate(-5px); }
+  50% { transform: translate(5px); }
+  75% { transform: translate(-5px); }
+  100% { transform: translate(0); }
+}
+
+/* Section Styles */
+section {
+  background: #ffffff; /* Card background */
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0; /* Start hidden */
+  animation: fadeIn 0.5s forwards; /* Fade-in animation for sections */
+}
+
+/* Bounce Animation for Sections */
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  20% { transform: translateY(-10px); }
+  40% { transform: translateY(5px); }
+  60% { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+section.bounce {
+  animation: bounce 0.5s; /* Bounce effect for sections */
+}
+
+/* Staggered Animation for Sections */
+@keyframes fadeInStaggered {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section:nth-of-type(1) {
+  animation: fadeInStaggered 0.5s forwards 0.1s; /* Delay for stagger effect */
+}
+section:nth-of-type(2) {
+  animation: fadeInStaggered 0.5s forwards 0.2s; /* Delay for stagger effect */
+}
+section:nth-of-type(3) {
+  animation: fadeInStaggered 0.5s forwards 0.3s; /* Delay for stagger effect */
+}
+
+/* Pop-Up Effect for Sections */
+@keyframes popUp {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+section {
+  animation: popUp 0.5s forwards; /* Pop-up effect for sections */
+}
+
+/* Hover Effects for Sections */
+section:hover {
+  transform: translateY(-5px) rotate(2deg); /* Tilt effect on hover */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon Styles */
+.weather-icon {
+  width: 80px; /* Adjust size */
+  transition: transform 0.3s; /* Smooth scaling */
+}
+
+.weather-icon:hover {
+  transform: rotate(20deg) scale(1.1); /* Rotate and scale icon on hover */
+}
+
+.city-image {
+  width: 100%; /* Full width */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+/* Footer Styles */
+.footer {
+  transition: transform 0.3s ease; /* Smooth scaling */
+}
+
+.footer:hover {
+  transform: scale(1.05); /* Scale up on hover */
+}
+
+footer {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .app-container {
+    padding: 20px; /* Reduced padding for mobile */
+  }
+
+  h1 {
+    font-size: 28px; /* Adjusted size for mobile */
+  }
+
+  h2 {
+    font-size: 22px; /* Adjusted size for mobile */
+  }
+}
